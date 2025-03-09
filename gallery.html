@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM 2 REAL Gallery</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow: auto;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeIn 1.5s ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: 1 / 1;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            pointer-events: none; /* Disables right-click */
+            user-drag: none;
+            -webkit-user-drag: none;
+        }
+
+
+        .gallery img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .background-animation span {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(179, 201, 201, 0.163);
+            border-radius: 50%;
+            animation: moveAround 10s infinite linear;
+        }
+
+        @keyframes moveAround {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(50vh) translateX(50vw);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-animation" id="background"></div>
+    <h1>SIM 2 REAL Gallery</h1>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+       const images = ['https://drive.google.com/uc?export=view&id=1nzy2krHUZRa9_n4EKQfCA0VNUIYQazra', 'https://drive.google.com/uc?export=view&id=1nvNtrggSs8Djnp8NLvhAwvxL_Myp00AG', 'https://drive.google.com/uc?export=view&id=1nuh8I5xG9Fm5FjGI3wjV_GvGp3rTVHqu', 'https://drive.google.com/uc?export=view&id=1ntRWuVVhzKZ0aEA77LQ40e7KE-YcGnGa', 'https://drive.google.com/uc?export=view&id=1ntKlK0g4hYuXoDKGsIAz6JeOJOQzB3YQ', 'https://drive.google.com/uc?export=view&id=1nruJ-FPVyPXLXRijuXBLtQh7e6Swwd7n', 'https://drive.google.com/uc?export=view&id=1nmMHyNfemDrSjnK7TbJlPQgo_KEj2weS', 'https://drive.google.com/uc?export=view&id=1njjUGnz66ElX_k_M9hBNlw6glHpZHExm', 'https://drive.google.com/uc?export=view&id=1nf3bJpNcHHOpSz_xXM8q5kunViBD4ZE1', 'https://drive.google.com/uc?export=view&id=1nf-jpypZNiTqjFBvOSFHvUjY63Ps83S_', 'https://drive.google.com/uc?export=view&id=1neay8bdalAqd4sC_VR-Z9B8D-eQkC5Vu', 'https://drive.google.com/uc?export=view&id=1nbM-S1-OUjaH-PzLDirQKjsQSnK0LTcr', 'https://drive.google.com/uc?export=view&id=1nb72S-1UExDy-jy4DzjCFcWxJJ0zRhpb', 'https://drive.google.com/uc?export=view&id=1naS4XLtHvlMDptYId7dDkrXEOPTznUgz', 'https://drive.google.com/uc?export=view&id=1nPXnJZmGEoRMLAX6PsHfDz8ocP0wpRIw', 'https://drive.google.com/uc?export=view&id=1nJuMATgjpFzagSF0gg4qNCP1Omx4vFby', 'https://drive.google.com/uc?export=view&id=1nFtDka29rFB2J5J1_cKQnN1j-s1JqZdQ', 'https://drive.google.com/uc?export=view&id=1nDxqUJyWR2j7oZb7Ryu7DCFiodvJBHMG', 'https://drive.google.com/uc?export=view&id=1nDbQv4bT6NjuZW4zMShKYmo7pjR7fSE_', 'https://drive.google.com/uc?export=view&id=1nBv5scRHcnOHV245xkfQjAUQAdt79mq_', 'https://drive.google.com/uc?export=view&id=1n9eyGmBJvwy7GfOQZNqIZQNGQ8-IVqYK', 'https://drive.google.com/uc?export=view&id=1n7FTqqgzoAmfNmwZSSYEXdITcdAIJy4h', 'https://drive.google.com/uc?export=view&id=1n75nmHFXXUm2pkjKerRZTRqkOPLOCeVY', 'https://drive.google.com/uc?export=view&id=1n6OCq-mW1jDWfeY1ySTuPIHgK9lCB_tL', 'https://drive.google.com/uc?export=view&id=1n62x1K5XMauGnRRkXb-r4Ya0tyKr7MpO', 'https://drive.google.com/uc?export=view&id=1n22aD5P7Cp4chVS9766HYDJFIGavkfvi', 'https://drive.google.com/uc?export=view&id=1n1OnA9_9Wq1yHGkwzGfpqsCEVklr1aia', 'https://drive.google.com/uc?export=view&id=1mwqHA5UroeOk3bjXy9JbPAQizROeXcHq', 'https://drive.google.com/uc?export=view&id=1mpi8YV-kIp3L0ShQoM5V7wMzvH_mjLP_', 'https://drive.google.com/uc?export=view&id=1mnJtWKAMy6e_SM4a4f_PyqHcI1euv_zB', 'https://drive.google.com/uc?export=view&id=1mfx3eveNUOd7-NXZZNwmBtc4S5jghkxH', 'https://drive.google.com/uc?export=view&id=1mc63RpjiwSYmLc8WlCPcrMyHYdFaWcac', 'https://drive.google.com/uc?export=view&id=1m_LVsAuGeQ4PxEaNuYAnRkUuiCZc72JG', 'https://drive.google.com/uc?export=view&id=1mYfoS0qMW1XZVhtwzl2sgDj9btzQ6o5v', 'https://drive.google.com/uc?export=view&id=1mUnL34zDalCvp8seQVeHjW4GdEf5LbEN', 'https://drive.google.com/uc?export=view&id=1mJNRqdDLl2xXMRZSJI1k2NoEA5aoiPAn', 'https://drive.google.com/uc?export=view&id=1mBWAhAxtZM8lRWpancFLJjKkAmNONpwF', 'https://drive.google.com/uc?export=view&id=1mBV4mbboxcU85T6lJCKJJKlfQ4xIEu_d', 'https://drive.google.com/uc?export=view&id=1m76yK47LtXjkyCFGQO2mLQaOlfcY05_C', 'https://drive.google.com/uc?export=view&id=1m410PaGzn88OYyMG1VuBENlNcDxyIpzq', 'https://drive.google.com/uc?export=view&id=1lyW2GVXEKJ2wox8rBj4efegPYoKwhC7B', 'https://drive.google.com/uc?export=view&id=1lnkGeBqBcYnDnhCUXq0bvoGKQ_VdGC9R', 'https://drive.google.com/uc?export=view&id=1liAjylMJooAutPqOLGcf6ej6DabURYvO', 'https://drive.google.com/uc?export=view&id=1lfeD1BPZ1_GZfmucil5nKX5aPgzV6WLB', 'https://drive.google.com/uc?export=view&id=1lbksOq7-Hw1qziNk-GKyEjYmlYhSPtJ_', 'https://drive.google.com/uc?export=view&id=1lRQchWiGnoSD5THv0nx3f_RDoyrbNG_I', 'https://drive.google.com/uc?export=view&id=1lOm7hzquyc_K0xuiIEFGXnq7YRYdVwyG', 'https://drive.google.com/uc?export=view&id=1lEwFMV85uSpzg_cLFJ_6l3mmnGmyCley', 'https://drive.google.com/uc?export=view&id=1l84mdrrpIBWWDejfZN6bceC4bdKO5d2a', 'https://drive.google.com/uc?export=view&id=1l5WR4ufSkSOyj2mCbfsxXlChInWqNUOQ', 'https://drive.google.com/uc?export=view&id=1l27Q4OBnStEfJLQexYUwmy4VlzdyGGXi', 'https://drive.google.com/uc?export=view&id=1l-TTDTcrOAYC45PFeF4fHePedpb55HAD', 'https://drive.google.com/uc?export=view&id=1kucoaQxCA6Sic7cx0PBXdwj71qJIJAwt', 'https://drive.google.com/uc?export=view&id=1klZgt7hxUd9CZCb06kriTKzVhOmn-9zW', 'https://drive.google.com/uc?export=view&id=1khk5Rll39p4NUHmqFZVZk-VJohS5nxB6', 'https://drive.google.com/uc?export=view&id=1kcjakCQHM-o4sn1jYVs9DiOMl25OXFK5', 'https://drive.google.com/uc?export=view&id=1kc-5RLrfwMrPr2WXrsf9smFaIbJhgElt', 'https://drive.google.com/uc?export=view&id=1k_-EfVZmgf-Qxx4S4XbcKnP6Koeiex7Q', 'https://drive.google.com/uc?export=view&id=1kZP7aKkasj99mtAkxcLFRk32yQyQ5Fi-', 'https://drive.google.com/uc?export=view&id=1kZCISvDsAS83CirOivbupuq9Wa0kd8dh', 'https://drive.google.com/uc?export=view&id=1kWwkVz_qu-TAG1InpTVcaBfFDkXcmLrG', 'https://drive.google.com/uc?export=view&id=1kSonN8YTrbcDPG7Fo2LfqyncJmr9UcWu', 'https://drive.google.com/uc?export=view&id=1kNi-XfDCzLyivmXVus6GDbFxAC7SGZqU', 'https://drive.google.com/uc?export=view&id=1kLiNm--kofPhRB6eoyV5a91CGWzRsjIw', 'https://drive.google.com/uc?export=view&id=1kDMlO0RZw3DSDNsQyddrKPg3rAaVANKw', 'https://drive.google.com/uc?export=view&id=1kAXrUVMm50L2YlRzdXCMRu7IMoR6jkhQ', 'https://drive.google.com/uc?export=view&id=1k9LlzmDEWlkJ3HKlP9JtYQiH6ndI-TCT', 'https://drive.google.com/uc?export=view&id=1jxoizZemNravPyrgJJSEg4fPbqZoF18I', 'https://drive.google.com/uc?export=view&id=1jvuvJJkiLAsKpRdcZyo4qsR33WBMeugX', 'https://drive.google.com/uc?export=view&id=1jnOhk05IM11HDFf23T0kV2uQurDLIsT8', 'https://drive.google.com/uc?export=view&id=1jmpN2TrMHYZBLxNRj0fhuu9KC8x_kOaE', 'https://drive.google.com/uc?export=view&id=1jlrej3ug0zAvuyMFZKbf4fon01bk4KE-', 'https://drive.google.com/uc?export=view&id=1jRyY1ohjArFVFYGrGWxh6Wrt4sr-iYWy'];
+
+// Function to convert Google Drive URLs
+function convertDriveURL(url) {
+    const match = url.match(/id=([^&]+)/);
+    return match ? `https://lh3.googleusercontent.com/d/${match[1]}=w1000` : url;
+}
+
+// Convert all URLs in the array
+const convertedImages = images.map(convertDriveURL);
+const gallery = document.getElementById("gallery");
+
+// Append images to the gallery
+convertedImages.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Hackathon Image";
+    gallery.appendChild(img);
+});
+
+
+        // Background animation effect
+        const background = document.getElementById("background");
+        for (let i = 0; i < 50; i++) {
+            let bubble = document.createElement("span");
+            let size = Math.random() * 50 + 20;
+            bubble.style.width = size + "px";
+            bubble.style.height = size + "px";
+            bubble.style.top = Math.random() * 100 + "vh";
+            bubble.style.left = Math.random() * 100 + "vw";
+            bubble.style.animationDuration = Math.random() * 5 + 5 + "s";
+            background.appendChild(bubble);
+        }
+    </script>
+</body>
+
+</html>
