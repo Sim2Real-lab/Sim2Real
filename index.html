@@ -183,7 +183,39 @@
     animation: loading 2s linear infinite;
 }
 
-/* Keyframes for animations */
+.sponsors {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .sponsor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 150px;
+            text-align: center;
+        }
+        .sponsor img {
+            max-width: 100%;
+            height: auto;
+        }
+        .preloader-sponsors {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 40px;
+    margin-top: 10px; 
+}
+.preloader-sponsors .sponsor {
+    width: 120px; 
+    padding: 5px; 
+}
+.sponsors {
+    gap: 40px; 
+}
+
+
+
 @keyframes hover {
     from { transform: translateY(0px); }
     to { transform: translateY(-15px); }
@@ -199,13 +231,13 @@
     100% { width: 100%; }
 }
 
-/* Hide content initially */
+
 .hidden {
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
 
-/* Show content when loaded */
+
 #content {
     opacity: 1;
     padding: 20px;
@@ -224,18 +256,49 @@
     </script>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-container">
-            <div class="drone-hover"><img src="asset.jpeg"></img></div>
-            <h1 class="loading-text">Sim2Real by Robotech NITK</h1>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
+  <!-- Preloader -->
+<div id="preloader">
+    <div class="loader-container">
+        <div class="drone-hover"><img src="asset.jpeg" alt="Drone"></div>
+        <h1 class="loading-text">Sim2Real by Robotech NITK</h1>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <!-- Sponsors Section -->
+        <div class="sponsors">
+            <p>Sponsered By:</p>
+            <img src="asset2.png" alt="Niveus" class="sponsor-logo">
+            <img src="asset3.png" alt="Quest Global" class="sponsor-logo">
         </div>
     </div>
+</div>
 
-    <header>Swarm Drone Simulation Hackathon</header>
+<style>
+    .sponsors {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .sponsor-logo {
+        height: 50px; /* Adjust size as needed */
+    }
+</style>
+
+
+    <header><img src="">Swarm Drone Simulation Hackathon</header>
+    <div class="sponsors">
+        <h2>Sponsered By:</h2><br>
+        <div class="sponsor">
+            <img src="asset2.png" alt="Niveus">
+            <p>Niveus</p>
+        </div>
+        <div class="sponsor">
+            <img src="asset3.png" alt="Quest">
+            <p>Quest</p>
+        </div>
+    </div>
     <nav>
         <a href="#problem">Problem Statement</a>
         <a href="#intro">Introduction</a>
@@ -610,7 +673,7 @@ stage5_advanced_swarm ()</pre>
             </ul>
     </main>
     <footer>
-        &copy; 2025 Swarm Drone Hackathon | Powered by ROBOTECHNITK
+        &copy; 2025 Swarm Drone Hackathon | Powered by ROBOTECHNITK-INCIDENT 2025 <br>This site is best viewed in a Desktop version.
     </footer>
 </body>
 
