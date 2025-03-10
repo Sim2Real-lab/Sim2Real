@@ -44,6 +44,7 @@
             background: #ff6f00;
             padding: 15px;
             text-align: center;
+            margin-top: 15px;
         }
 
         nav a {
@@ -257,6 +258,7 @@
     body.noscroll {
             overflow: hidden;
         }
+    
 
         /* Overlay background */
         #overlay {
@@ -320,15 +322,17 @@
         #eventPopup button:hover {
             background: #0056b3;
         }
+        .sponser_pop{
+            height: 50px;
+        }
         .Social_media{
             display: flexbox;
             gap: 50px;
             
         }
         .social{
-            height: 5%;
-            width: 15%;
-            padding: 5%;
+            height: 50px;
+            padding:15px;
         }
     </style>
     <script>
@@ -391,7 +395,7 @@
     <div id="eventPopup">
         <h2>Thank You for Showing Intrest</h2>
         <p><strong>Winners of Sim2Real 2025:<br></strong> 1. Team ROSLEELA <br> 2. Team Innovators <br> 3. Team Encrypt Nation</p>
-        <p>Special thanks to our sponsors <br><img src="asset2.png"><br><img src="asset3.png"></p>
+        <p>Special thanks to our sponsors <br><img class="sponser_pop" src="asset2.png"><br><img class="sponser_pop" src="asset3.png"></p>
         <p><a href="https://gallerywebsite.com" target="_blank">View Event Gallery</a></p>
         <div class="Social_media">For future events stay tune to: <br> <a href="https://www.linkedin.com/company/robotech-nitk/?originalSubdomain=in"><img class="social" src="asset4.jpeg" alt="linkedin"></a><a href="https://www.instagram.com/robotech_nitk/"><img class="social" src="asset5.jpeg" alt="Insta"></a></div>
         <button onclick="closePopup()">Close</button>
