@@ -254,6 +254,82 @@
     .sponsor-logo {
         height: 50px; /* Adjust size as needed */
     }
+    body.noscroll {
+            overflow: hidden;
+        }
+
+        /* Overlay background */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        /* Popup container */
+        #eventPopup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            z-index: 1000;
+            width: 400px;
+            max-height: 80vh;
+            text-align: center;
+            display: none;
+            overflow-y: auto; /* Enables scrolling inside the popup */
+        }
+
+        /* Popup content styles */
+        #eventPopup h2 {
+            margin-top: 0;
+        }
+
+        #eventPopup p {
+            margin: 10px 0;
+        }
+
+        #eventPopup a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        #eventPopup a:hover {
+            text-decoration: underline;
+        }
+
+        /* Close button */
+        #eventPopup button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #eventPopup button:hover {
+            background: #0056b3;
+        }
+        .Social_media{
+            display: flexbox;
+            gap: 50px;
+            
+        }
+        .social{
+            height: 5%;
+            width: 15%;
+            padding: 5%;
+        }
     </style>
     <script>
         window.onload = function () {
@@ -262,7 +338,23 @@
                 document.getElementById("preloader").style.pointerEvents = "none";
                 document.getElementById("content").classList.remove("hidden");
             }, 2000); // Adjust time as needed
+            document.getElementById("eventPopup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+            document.body.classList.add("noscroll");
         };
+
+        function closePopup() {
+            document.getElementById("eventPopup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+            document.body.classList.remove("noscroll"); // Re-enable body scroll
+        }
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+
+        function closeMenu() {
+    document.querySelector(".nav-links").classList.remove("active");
+}
     </script>
 
 <body>
@@ -294,17 +386,30 @@
             <p>Quest</p>
         </div>
     </div>
+    <div id="overlay"></div>
+
+    <div id="eventPopup">
+        <h2>Thank You for Showing Intrest</h2>
+        <p><strong>Winners of Sim2Real 2025:<br></strong> 1. Team ROSLEELA <br> 2. Team Innovators <br> 3. Team Encrypt Nation</p>
+        <p>Special thanks to our sponsors <br><img src="asset2.png"><br><img src="asset3.png"></p>
+        <p><a href="https://gallerywebsite.com" target="_blank">View Event Gallery</a></p>
+        <div class="Social_media">For future events stay tune to: <br> <a href="https://www.linkedin.com/company/robotech-nitk/?originalSubdomain=in"><img class="social" src="asset4.jpeg" alt="linkedin"></a><a href="https://www.instagram.com/robotech_nitk/"><img class="social" src="asset5.jpeg" alt="Insta"></a></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+    <header>Swarm Drone Simulation Hackathon</header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <nav>
-        <a href="#problem">Problem Statement</a>
-        <a href="#intro">Introduction</a>
-        <a href="#stage1">Stage 1</a>
-        <a href="#stage2">Stage 2</a>
-        <a href="#stage3">Stage 3</a>
-        <a href="#stage4">Stage 4</a>
-        <a href="#stage5">Stage 5</a>
-        <a href="#submission">Submission</a>
-        <a href="#references">References</a>
-        <a href="https://forms.gle/Cs18rz8LHZ1mL4Ey8">Feedback</a>
+        <div class="nav-links">
+        <a href="#problem" onclick="closeMenu()">Problem Statement</a>
+        <a href="#intro" onclick="closeMenu()">Introduction</a>
+        <a href="#stage1" onclick="closeMenu()">Stage 1</a>
+        <a href="#stage2" onclick="closeMenu()">Stage 2</a>
+        <a href="#stage3" onclick="closeMenu()">Stage 3</a>
+        <a href="#stage4" onclick="closeMenu()">Stage 4</a>
+        <a href="#stage5" onclick="closeMenu()">Stage 5</a>
+        <a href="#submission" onclick="closeMenu()">Submission</a>
+        <a href="#references" onclick="closeMenu()">References</a>
+        <a href="https://forms.gle/Cs18rz8LHZ1mL4Ey8">Feedback</a></div>
     </nav>
     <main>
         <h2 id="problem">Problem Statement</h2>
